@@ -12,7 +12,7 @@ ios/Runner/GeneratedPluginRegistrant.*
 # Miscellaneous
 *.class
 *.log
-*.logg
+*.log
 *.pyc
 *.swp
 .DS_Store
