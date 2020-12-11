@@ -12,7 +12,6 @@ ios/Runner/GeneratedPluginRegistrant.*
 # Miscellaneous
 *.class
 *.log
-*.log
 *.pyc
 *.swp
 .DS_Store
@@ -79,3 +78,5 @@ ios/Runner/GeneratedPluginRegistrant.*
 # Support file for ci
 ~changed_list_file
 packages/template/ios/Flutter/flutter_export_environment.sh
+# Develop res ignore
+/res/res.txt
