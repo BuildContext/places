@@ -79,4 +79,4 @@ ios/Runner/GeneratedPluginRegistrant.*
 ~changed_list_file
 packages/template/ios/Flutter/flutter_export_environment.sh
 # Develop res ignore
-/res/res.txt
+**/res/res.txt
