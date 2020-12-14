@@ -26,10 +26,49 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyFirstWidget(),
     );
   }
 }
+
+class MySecondWidget extends StatefulWidget {
+  @override
+  _MySecondWidgetState createState() => _MySecondWidgetState();
+}
+
+class _MySecondWidgetState extends State<MySecondWidget> {
+  int count = 0;
+  @override
+  Widget build(BuildContext context) {
+    count++;
+    print("Метод build в MySecondWidget был вызван $count раз");
+    return Container(
+      child: Center(
+        child: Text("Hello"),
+      ),
+    );
+  }
+}
+
+class MyFirstWidget extends StatelessWidget {
+  int count = 0;
+  @override
+  Widget build(BuildContext context) {
+    count++;
+    print("Метод build в MyFirstWidget был вызван $count раз");
+    return Container(
+      child: Center(
+        child: Text("Hello"),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
