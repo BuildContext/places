@@ -11,6 +11,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: SightListScreen(),
       title: "MyFirstTitle",
+      theme: ThemeData(fontFamily: 'Roboto'),
     );
   }
 }
