@@ -26,3 +26,4 @@ flutter:
         - asset: res/fonts/Roboto/Roboto-Bold.ttf
   assets:
     - res/
+  uses-material-design: true
