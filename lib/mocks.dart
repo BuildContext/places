@@ -1,5 +1,9 @@
 import 'package:places/domain/sight.dart';
 
+/*
+* Временный массив объектов Sight с моковыми данными
+*/
+
 final List mocks = [
   Sight(
       name: "McDonalds",

@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/screen/sight_card.dart';
 
+
+/*
+*  SightListScreen - экран который рендерит массив виджетов SightCard
+*  с кратким описанием доистопримечательностей,
+*/
+
 class SightListScreen extends StatefulWidget {
   @override
   _SightListScreenState createState() => _SightListScreenState();
@@ -42,6 +48,6 @@ class _SightListScreenState extends State<SightListScreen> {
               ),
             ],
           ),
-        ));
+        ),);
   }
 }
