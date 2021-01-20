@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:places/constants/text_styles.dart';
+import 'package:places/constants/colours_const.dart';
 import 'package:places/domain/sight.dart';
 
-/*
-* SightCard - виджет катрочки с кратким описанием
-*  доистопримечательности,
-*  - используется как елемент в экране SightListScreen,
-*  - использует модель данных Sight
-*/
+/// SightCard - виджет катрочки с кратким описанием
+///  доистопримечательности,
+///  - используется как елемент в экране SightListScreen,
+///  - использует модель данных Sight
+
 class SightCard extends StatelessWidget {
   final Sight sight;
 
@@ -16,7 +17,7 @@ class SightCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 188,
-      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: Color(0xFFF5F5F5),
@@ -42,16 +43,12 @@ class SightCard extends StatelessWidget {
                     children: [
                       Text(
                         sight.type,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14,
-                        ),
+                        style: smallBoldTextStyle(color: white),
                       ),
                       Container(
                         width: 20,
                         height: 18,
-                        color: Colors.white,
+                        color: white,
                       ),
                     ],
                   ),
@@ -70,19 +67,12 @@ class SightCard extends StatelessWidget {
                 children: [
                   Text(
                     sight.name,
-                    style: TextStyle(
-                        color: Color(0xFF3B3E5B),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16),
+                    style: smallTitleTextStyle(color: secondary),
                     maxLines: 2,
                   ),
                   Text(
                     sight.details,
-                    style: TextStyle(
-                      color: Color(0xFF7C7E92),
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                    ),
+                    style: smallTextStyle(color: secondary2),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ],

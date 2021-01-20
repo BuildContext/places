@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants.dart';
+import 'package:places/constants/strings_const.dart';
+import 'package:places/constants/text_styles.dart';
+import 'package:places/constants/colours_const.dart';
 import 'package:places/domain/sight.dart';
 
-/*
-* SightDetails - модель экрана с подробной информацией
-*  о интересном месте, а также
-*  кнопками "Проложить маршрут", "В избранное"
-*  и "Запланировать"
-* - использует модель данных Sight
-*/
+/// SightDetails - модель экрана с подробной информацией
+/// о интересном месте, а также
+///  кнопками "Проложить маршрут", "В избранное"
+/// и "Запланировать"
+/// - использует модель данных Sight
 
 class SightDetails extends StatelessWidget {
   final Sight sight;
@@ -17,9 +17,14 @@ class SightDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [picturesAndBackButton(), descriptionAndButtons()],
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            picturesAndBackButton(),
+            descriptionAndButtoms(),
+          ],
+        ),
       ),
     );
   }
@@ -39,13 +44,14 @@ class SightDetails extends StatelessWidget {
                 width: 32,
                 height: 32,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white),
+                  borderRadius: BorderRadius.circular(10),
+                  color: white,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 6),
                   child: Icon(
                     Icons.arrow_back_ios,
-                    color: Colors.black,
+                    color: black,
                     size: 15,
                   ),
                 ),
@@ -55,7 +61,7 @@ class SightDetails extends StatelessWidget {
         ));
   }
 
-  Widget descriptionAndButtons() {
+  Widget descriptionAndButtoms() {
     return Container(
       child: Padding(
         padding: const EdgeInsets.only(top: 24, left: 16, right: 16),
@@ -65,47 +71,31 @@ class SightDetails extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 sight.name,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFF3B3E5B),
-                ),
+                style: mediumTitleTextStyle(color: secondary),
               ),
             ),
-            SizedBox(height: 2),
+            const SizedBox(height: 2),
             Row(
               children: [
                 Text(
                   sight.type,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xFF3B3E5B),
-                  ),
+                  style: smallBoldTextStyle(color: secondary),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Text(
                   sight_details_open,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xFF7C7E92),
-                  ),
-                )
+                  style: smallTextStyle(color: secondary2),
+                ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
             Text(
               sight.details,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                color: Color(0xFF3B3E5B),
-              ),
+              style: smallTextStyle(color: secondary),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Container(
               width: double.infinity,
               height: 48,
@@ -121,27 +111,22 @@ class SightDetails extends StatelessWidget {
                     size: 24,
                     color: Colors.white,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
                     sight_details_directions,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                      letterSpacing: 1.2,
-                    ),
+                    style: buttonBigTextStyle(color: white),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Divider(
               thickness: 0.8,
-              color: Color(0xFF7C7E92).withOpacity(0.4),
+              color: secondary2.withOpacity(0.4),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Row(
               children: [
                 Expanded(
@@ -153,15 +138,13 @@ class SightDetails extends StatelessWidget {
                         Icon(
                           Icons.calendar_today_outlined,
                           size: 22,
-                          color: Color(0xFF7C7E92).withOpacity(0.4),
+                          color: secondary2.withOpacity(0.4),
                         ),
-                        SizedBox(width: 9),
+                        const SizedBox(width: 9),
                         Text(
                           sight_details_to_plan,
-                          style: TextStyle(
-                            color: Color(0xFF7C7E92).withOpacity(0.4),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
+                          style: smallTextStyle(
+                            color: secondary2.withOpacity(0.4),
                           ),
                         ),
                       ],
@@ -177,15 +160,12 @@ class SightDetails extends StatelessWidget {
                         Icon(
                           Icons.star_rate,
                           size: 22,
-                          color: Color(0xFF7C7E92).withOpacity(0.4),
+                          color: secondary,
                         ),
-                        SizedBox(width: 9),
+                        const SizedBox(width: 9),
                         Text(
                           sight_details_to_favorites,
-                          style: TextStyle(
-                              color: Color(0xFF7C7E92).withOpacity(0.4),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400),
+                          style: smallTextStyle(color: secondary),
                         ),
                       ],
                     ),
