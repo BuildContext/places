@@ -4,7 +4,6 @@ import 'package:places/constants/text_styles.dart';
 import 'package:places/constants/colours_const.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/screen/sight_card.dart';
-import 'package:places/widgets/custom_appBar.dart';
 
 ///  SightListScreen - экран который рендерит массив виджетов SightCard
 ///  с кратким описанием доистопримечательностей,
@@ -18,31 +17,66 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: sigth_list_screen_title, height: 136,),
+      appBar: CustomAppBar(
+        title: sigth_list_screen_title,
+        height: 136,
+      ),
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            AspectRatio(
+          children: List.generate(mocks.length, (index) {
+            return AspectRatio(
               aspectRatio: 3 / 2,
               child: SightCard(
-                sight: mocks[1],
+                sight: mocks[index],
               ),
-            ),
-            AspectRatio(
-              aspectRatio: 3 / 2,
-              child: SightCard(
-                sight: mocks[2],
-              ),
-            ),
-            AspectRatio(
-              aspectRatio: 3 / 2,
-              child: SightCard(
-                sight: mocks[0],
-              ),
-            ),
-          ],
+            );
+          }),
         ),
       ),
     );
   }
+}
+
+class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+  @override
+  final String title;
+  final double height;
+
+  const CustomAppBar({
+    Key key,
+    this.title,
+    @required this.height,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: 80,
+          ),
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: 280,
+              maxHeight: 100,
+            ),
+            child: Text(
+              title,
+              style: largeTitleTextStyle(
+                color: secondary,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => Size.fromHeight(height);
 }
