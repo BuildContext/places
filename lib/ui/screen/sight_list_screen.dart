@@ -17,34 +17,66 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.only(top: 24),
-          child: Text(
-            sigth_list_screen_title,
-            style: largeTitleTextStyle(color: secondary),
-            maxLines: 2,
-          ),
-        ),
-        toolbarHeight: 100,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+      appBar: CustomAppBar(
+        title: sigth_list_screen_title,
+        height: 136,
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            SightCard(
-              sight: mocks[1],
-            ),
-            SightCard(
-              sight: mocks[2],
-            ),
-            SightCard(
-              sight: mocks[0],
-            ),
-          ],
+          children: List.generate(mocks.length, (index) {
+            return AspectRatio(
+              aspectRatio: 3 / 2,
+              child: SightCard(
+                sight: mocks[index],
+              ),
+            );
+          }),
         ),
       ),
     );
   }
+}
+
+class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+  @override
+  final String title;
+  final double height;
+
+  const CustomAppBar({
+    Key key,
+    this.title,
+    @required this.height,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: 80,
+          ),
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: 280,
+              maxHeight: 100,
+            ),
+            child: Text(
+              title,
+              style: largeTitleTextStyle(
+                color: secondary,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => Size.fromHeight(height);
 }

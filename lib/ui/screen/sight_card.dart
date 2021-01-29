@@ -59,23 +59,32 @@ class SightCard extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Padding(
-              padding: const EdgeInsets.only(
-                  left: 16, right: 47, top: 16, bottom: 16),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    sight.name,
-                    style: smallTitleTextStyle(color: secondary),
-                    maxLines: 2,
+              padding: const EdgeInsets.only(left: 16, bottom: 16),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: 250,
                   ),
-                  Text(
-                    sight.details,
-                    style: smallTextStyle(color: secondary2),
-                    overflow: TextOverflow.ellipsis,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 16),
+                      Text(
+                        sight.name,
+                        style: smallTitleTextStyle(color: secondary),
+                        maxLines: 2,
+                      ),
+                      const SizedBox(height: 2,),
+                      Text(
+                        sight.details,
+                        style: smallTextStyle(color: secondary2),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
