@@ -17,9 +17,9 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
+      appBar: _CustomAppBar(
         title: sigth_list_screen_title,
-        height: 136,
+        height: 135,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -37,16 +37,16 @@ class _SightListScreenState extends State<SightListScreen> {
   }
 }
 
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
-  @override
+class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final String title;
   final double height;
 
-  const CustomAppBar({
+  const _CustomAppBar({
     Key key,
-    this.title,
     @required this.height,
-  }) : super(key: key);
+    this.title,
+  })  : assert(height != null && title != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
