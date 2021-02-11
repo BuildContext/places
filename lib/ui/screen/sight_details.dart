@@ -35,7 +35,13 @@ class SightDetails extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              color: Colors.brown,
+              child: Image.asset(
+                sight.localPath,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Center(
+              child: CircularProgressIndicator(),
             ),
             Positioned(
               left: 16,

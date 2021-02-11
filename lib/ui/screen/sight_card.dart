@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:places/constants/text_styles.dart';
 import 'package:places/constants/colours_const.dart';
@@ -30,9 +31,12 @@ class SightCard extends StatelessWidget {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.yellow,
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(16),
+                    ),
+                    image: DecorationImage(
+                      image: AssetImage(sight.localPath),
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
@@ -47,11 +51,18 @@ class SightCard extends StatelessWidget {
                       ),
                       Container(
                         width: 20,
-                        height: 18,
-                        color: white,
+                        height: 20,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("res/icons/heart.png")
+                          )
+                        ),
                       ),
                     ],
                   ),
+                ),
+                Center(
+                  child: CircularProgressIndicator(),
                 ),
               ],
             ),
@@ -75,7 +86,9 @@ class SightCard extends StatelessWidget {
                         style: smallTitleTextStyle(color: secondary),
                         maxLines: 2,
                       ),
-                      const SizedBox(height: 2,),
+                      const SizedBox(
+                        height: 2,
+                      ),
                       Text(
                         sight.details,
                         style: smallTextStyle(color: secondary2),

@@ -25,5 +25,11 @@ flutter:
         - asset: res/fonts/Roboto/Roboto-Regular.ttf
         - asset: res/fonts/Roboto/Roboto-Bold.ttf
   assets:
-    - res/
+    - res/images/1.jpg
+    - res/images/2.jpg
+    - res/images/3.jpg
+    - res/images/4.jpg
+    - res/images/5.jpg
+    - res/images/6.jpg
+    - res/icons/heart.png
   uses-material-design: true
