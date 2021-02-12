@@ -23,6 +23,13 @@ TextStyle smallTitleTextStyle({color}){
       fontSize: 16);
 }
 
+TextStyle subtitleTextStyle({color}){
+  return TextStyle(
+      color: color,
+      fontWeight: FontWeight.w500,
+      fontSize: 18);
+}
+
 TextStyle smallBoldTextStyle({color}) {
   return TextStyle(
     fontSize: 14,

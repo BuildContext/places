@@ -40,7 +40,7 @@ final List mocks = [
       lon: 139.79664702450793,
       url:
           "https://lh5.googleusercontent.com/p/AF1QipMGG43SvNbWVli2_lSr0cXz09SjG8651Z-xvWxL=s653-k-no",
-      localPath: "res/images/4.jpg",
+      localPath: "res/images/5.jpg",
       details:
           "Старейший храм Токио, построенный в 645 году в честь богини милосердия Каннон.",
       type: "Буддийский храм"),
