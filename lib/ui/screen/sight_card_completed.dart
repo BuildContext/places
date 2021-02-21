@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:places/constants/res_path_const.dart';
 import 'package:places/constants/text_styles.dart';
 import 'package:places/constants/colours_const.dart';
 import 'package:places/domain/sight.dart';
@@ -21,7 +22,7 @@ class SightCardCompleted extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: Color(0xFF000000),
+        color: bgCard,
       ),
       child: Column(
         children: [
@@ -54,7 +55,7 @@ class SightCardCompleted extends StatelessWidget {
                           Container(
                             width: 24,
                             height: 24,
-                            child: SvgPicture.asset('res/icons/share.svg'),
+                            child: SvgPicture.asset(shareIcon),
                           ),
                           const SizedBox(
                             width: 14,
@@ -62,7 +63,7 @@ class SightCardCompleted extends StatelessWidget {
                           Container(
                             width: 24,
                             height: 24,
-                            child: SvgPicture.asset('res/icons/close.svg'),
+                            child: SvgPicture.asset(closeIcon),
                           ),
                         ],
                       ),

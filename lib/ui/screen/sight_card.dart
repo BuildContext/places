@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:places/constants/res_path_const.dart';
 import 'package:places/constants/text_styles.dart';
 import 'package:places/constants/colours_const.dart';
 import 'package:places/domain/sight.dart';
@@ -52,9 +54,9 @@ class SightCard extends StatelessWidget {
                           style: smallBoldTextStyle(color: white),
                         ),
                         Container(
-                          width: 20,
-                          height: 18,
-                          color: white,
+                          width: 24,
+                          height: 24,
+                          child: SvgPicture.asset(closeIcon),
                         ),
                       ],
                     ),
