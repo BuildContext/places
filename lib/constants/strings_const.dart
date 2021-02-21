@@ -1,5 +1,4 @@
 //SightDetails
-import 'package:places/ui/screen/sight_list_screen.dart';
 
 const String sight_details_open = "закрыто до 09:00";
 const String sight_details_directions = "ПОСТРОИТЬ МАРШРУТ";

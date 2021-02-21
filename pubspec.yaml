@@ -4,13 +4,14 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.10.5 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
-  flutter_svg: 0.17.0
+  flutter_svg: ^0.20.0-nullsafety.3
+
 
 
 dev_dependencies:
@@ -23,13 +24,12 @@ flutter:
     - family: Roboto
       fonts:
         - asset: res/fonts/Roboto/Roboto-Regular.ttf
+        - asset: res/fonts/Roboto/Roboto-Medium.ttf
+          weight: 600
         - asset: res/fonts/Roboto/Roboto-Bold.ttf
+          weight: 700
   assets:
-    - res/images/1.jpg
-    - res/images/2.jpg
-    - res/images/3.jpg
-    - res/images/4.jpg
-    - res/images/5.jpg
-    - res/images/6.jpg
-    - res/icons/heart.png
+    - res/images/
+    - res/icons/
+    - res/icons/bottom_nav/
   uses-material-design: true
