@@ -27,11 +27,9 @@ class _VisitingScreenState extends State<VisitingScreen>
 
   @override
   Widget build(BuildContext context) {
-
     ///mocks
-    List plan_mocks = [mocks[1], mocks[0], mocks[4]];
-    List completed_mocks = [mocks[3]];
-
+    List planMocks = [mocks[1], mocks[0], mocks[4]];
+    List completedMocks = [mocks[3]];
 
     return Scaffold(
       appBar: _CustomAppBar(
@@ -43,87 +41,100 @@ class _VisitingScreenState extends State<VisitingScreen>
       body: TabBarView(
         controller: tabController,
         children: [
-          plan_mocks.length > 0 ? SingleChildScrollView(
-            child: Column(
-              children: List.generate(plan_mocks.length, (index) {
-                return AspectRatio(
-                  aspectRatio: 3 / 2,
-                  child: SightCardPlan(
-                    sight: plan_mocks[index],
+          planMocks.length > 0
+              ? SingleChildScrollView(
+                  child: Column(
+                    children: List.generate(planMocks.length, (index) {
+                      return AspectRatio(
+                        aspectRatio: 3 / 2,
+                        child: SightCardPlan(
+                          sight: planMocks[index],
+                        ),
+                      );
+                    }),
                   ),
-                );
-              }),
-            ),
-          ) : Center(
-            child: Container(
-              child: Column(
-                children: [
-                  const SizedBox(height: 170,),
-                  SvgPicture.asset("res/icons/card.svg"),
-                  const SizedBox(height: 24,),
-                  Text(
-                    "Пусто",
-                    style: subtitleTextStyle(
-                      color: secondary2.withOpacity(0.6),
+                )
+              : Center(
+                  child: Container(
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 170,
+                        ),
+                        SvgPicture.asset("res/icons/card.svg"),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        Text(
+                          "Пусто",
+                          style: subtitleTextStyle(
+                            color: secondary2.withOpacity(0.6),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          "Отмечайте понравившиеся\n места и они появиятся здесь.",
+                          style: smallTextStyle(
+                            color: secondary2.withOpacity(0.6),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
-                    textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 8,),
-                  Text(
-                    "Отмечайте понравившиеся\n места и они появиятся здесь.",
-                    style: smallTextStyle(
-                      color: secondary2.withOpacity(0.6),
+                ),
+          completedMocks.length > 0
+              ? SingleChildScrollView(
+                  child: Column(
+                    children: List.generate(completedMocks.length, (index) {
+                      return AspectRatio(
+                        aspectRatio: 3 / 2,
+                        child: SightCardCompleted(
+                          sight: completedMocks[index],
+                        ),
+                      );
+                    }),
+                  ),
+                )
+              : Center(
+                  child: Container(
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 170,
+                        ),
+                        SvgPicture.asset("res/icons/union.svg"),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        Text(
+                          "Пусто",
+                          style: subtitleTextStyle(
+                            color: secondary2.withOpacity(0.6),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          "Завершите маршрут, \n чтобы место попало сюда.",
+                          style: smallTextStyle(
+                            color: secondary2.withOpacity(0.6),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
-                    textAlign: TextAlign.center,
                   ),
-                ],
-              ),
-            ),
-          ),
-          completed_mocks.length > 0 ? SingleChildScrollView(
-            child: Column(
-              children: List.generate(completed_mocks.length, (index) {
-                return AspectRatio(
-                  aspectRatio: 3 / 2,
-                  child: SightCardCompleted(
-                    sight: completed_mocks[index],
-                  ),
-                );
-              }),
-            ),
-          ) : Center(
-            child: Container(
-              child: Column(
-                children: [
-                  const SizedBox(height: 170,),
-                  SvgPicture.asset("res/icons/union.svg"),
-                  const SizedBox(height: 24,),
-                  Text(
-                    "Пусто",
-                    style: subtitleTextStyle(
-                      color: secondary2.withOpacity(0.6),
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 8,),
-                  Text(
-                    "Завершите маршрут, \n чтобы место попало сюда.",
-                    style: smallTextStyle(
-                      color: secondary2.withOpacity(0.6),
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-            ),
-          ),
+                ),
         ],
       ),
     );
   }
-
-
-
 }
 
 class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {

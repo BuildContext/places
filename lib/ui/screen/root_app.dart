@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:places/constants/colours_const.dart';
+import 'package:places/constants/res_path_const.dart';
 import 'package:places/ui/screen/sight_list_screen.dart';
 import 'package:places/ui/screen/visiting_screen.dart';
+
+//Точка входа в приложение
 
 class RootApp extends StatefulWidget {
   @override
@@ -34,18 +37,10 @@ class _RootAppState extends State<RootApp> {
 
   Widget getAppBar() {
     var items = [
-      pageIndex == 0
-          ? 'res/icons/bottom_nav/list_fill.svg'
-          : 'res/icons/bottom_nav/list.svg',
-      pageIndex == 1
-          ? 'res/icons/bottom_nav/map_fill.svg'
-          : 'res/icons/bottom_nav/map.svg',
-      pageIndex == 2
-          ? 'res/icons/bottom_nav/heart_fill.svg'
-          : 'res/icons/bottom_nav/heart.svg',
-      pageIndex == 3
-          ? 'res/icons/bottom_nav/settings_fill.svg'
-          : 'res/icons/bottom_nav/settings.svg',
+      pageIndex == 0 ? listIconFill : listIcon,
+      pageIndex == 1 ? mapIconFill : mapIcon,
+      pageIndex == 2 ? heartIconFill : heartIcon,
+      pageIndex == 3 ? settingIconFill : settingIcon,
     ];
 
     return Padding(
@@ -67,7 +62,10 @@ class _RootAppState extends State<RootApp> {
               },
               child:
                   Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-                SvgPicture.asset(items[index], color: black,),
+                SvgPicture.asset(
+                  items[index],
+                  color: black,
+                ),
               ]),
             );
           })),

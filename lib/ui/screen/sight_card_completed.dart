@@ -21,7 +21,7 @@ class SightCardCompleted extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: Color(0xFFF5F5F5),
+        color: Color(0xFF000000),
       ),
       child: Column(
         children: [
@@ -56,7 +56,9 @@ class SightCardCompleted extends StatelessWidget {
                             height: 24,
                             child: SvgPicture.asset('res/icons/share.svg'),
                           ),
-                          const SizedBox(width: 14,),
+                          const SizedBox(
+                            width: 14,
+                          ),
                           Container(
                             width: 24,
                             height: 24,
@@ -103,7 +105,7 @@ class SightCardCompleted extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
                         ),
-                ),
+                      ),
                       const SizedBox(
                         height: 2,
                       ),

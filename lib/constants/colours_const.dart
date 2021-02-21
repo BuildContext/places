@@ -7,4 +7,6 @@ const white = Colors.white;
 const black = Colors.black;
 const green = Color(0xFF4CAF50);
 
+// Card
 
+const bgCard = Color(0xFFF5F5F5);
