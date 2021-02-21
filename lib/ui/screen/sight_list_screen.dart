@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/constants/strings_const.dart';
 import 'package:places/constants/text_styles.dart';
-import 'package:places/constants/colours_const.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/screen/sight_card.dart';
 
@@ -68,7 +67,7 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             child: Text(
               title,
               style: largeTitleTextStyle(
-                color: secondary,
+                color: Theme.of(context).accentColor,
               ),
             ),
           ),

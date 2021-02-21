@@ -51,7 +51,7 @@ class SightDetails extends StatelessWidget {
                 height: 32,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: white,
+                  color: lmWhiteColor,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 6),
@@ -77,7 +77,7 @@ class SightDetails extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 sight.name,
-                style: mediumTitleTextStyle(color: secondary),
+                style: mediumTitleTextStyle(color: lmSecondaryColor),
               ),
             ),
             const SizedBox(height: 2),
@@ -85,12 +85,12 @@ class SightDetails extends StatelessWidget {
               children: [
                 Text(
                   sight.type,
-                  style: smallBoldTextStyle(color: secondary),
+                  style: smallBoldTextStyle(color: lmSecondaryColor),
                 ),
                 const SizedBox(width: 16),
                 Text(
                   sight_details_open,
-                  style: smallTextStyle(color: secondary2),
+                  style: smallTextStyle(color: lmSecondaryLightColor),
                 ),
               ],
             ),
@@ -99,7 +99,7 @@ class SightDetails extends StatelessWidget {
             ),
             Text(
               sight.details,
-              style: smallTextStyle(color: secondary),
+              style: smallTextStyle(color: lmSecondaryColor),
             ),
             const SizedBox(height: 24),
             Container(
@@ -107,7 +107,7 @@ class SightDetails extends StatelessWidget {
               height: 48,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: Color(0xFF4CAF50),
+                color: lmGreenColour,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -115,14 +115,14 @@ class SightDetails extends StatelessWidget {
                   Icon(
                     Icons.directions_rounded,
                     size: 24,
-                    color: Colors.white,
+                    color: lmWhiteColor,
                   ),
                   const SizedBox(
                     width: 10,
                   ),
                   Text(
                     sight_details_directions,
-                    style: buttonBigTextStyle(color: white),
+                    style: buttonBigTextStyle(color: lmWhiteColor),
                   ),
                 ],
               ),
@@ -130,7 +130,7 @@ class SightDetails extends StatelessWidget {
             const SizedBox(height: 24),
             Divider(
               thickness: 0.8,
-              color: secondary2.withOpacity(0.4),
+              color: lmSecondaryLightColor.withOpacity(0.4),
             ),
             const SizedBox(height: 8),
             Row(
@@ -144,13 +144,13 @@ class SightDetails extends StatelessWidget {
                         Icon(
                           Icons.calendar_today_outlined,
                           size: 22,
-                          color: secondary2.withOpacity(0.4),
+                          color: lmSecondaryLightColor.withOpacity(0.4),
                         ),
                         const SizedBox(width: 9),
                         Text(
                           sight_details_to_plan,
                           style: smallTextStyle(
-                            color: secondary2.withOpacity(0.4),
+                            color: lmSecondaryLightColor.withOpacity(0.4),
                           ),
                         ),
                       ],
@@ -166,12 +166,12 @@ class SightDetails extends StatelessWidget {
                         Icon(
                           Icons.star_rate,
                           size: 22,
-                          color: secondary,
+                          color: lmSecondaryColor,
                         ),
                         const SizedBox(width: 9),
                         Text(
                           sight_details_to_favorites,
-                          style: smallTextStyle(color: secondary),
+                          style: smallTextStyle(color: lmSecondaryColor),
                         ),
                       ],
                     ),

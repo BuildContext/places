@@ -24,7 +24,7 @@ class SightCard extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: Color(0xFFF5F5F5),
+          color: Theme.of(context).cardColor,
         ),
         child: Column(
           children: [
@@ -51,7 +51,7 @@ class SightCard extends StatelessWidget {
                       children: [
                         Text(
                           sight.type,
-                          style: smallBoldTextStyle(color: white),
+                          style: smallBoldTextStyle(color: lmWhiteColor),
                         ),
                         Container(
                           width: 24,
@@ -80,7 +80,8 @@ class SightCard extends StatelessWidget {
                         const SizedBox(height: 16),
                         Text(
                           sight.name,
-                          style: smallTitleTextStyle(color: secondary),
+                          style: smallTitleTextStyle(
+                              color: Theme.of(context).accentColor),
                           maxLines: 2,
                         ),
                         const SizedBox(
@@ -88,7 +89,7 @@ class SightCard extends StatelessWidget {
                         ),
                         Text(
                           sight.details,
-                          style: smallTextStyle(color: secondary2),
+                          style: smallTextStyle(color: lmSecondaryLightColor),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
                         ),
