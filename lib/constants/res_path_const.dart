@@ -11,4 +11,7 @@ const String
     // card icons
     shareIcon = 'res/icons/share.svg',
     closeIcon = 'res/icons/close.svg',
-    calendarIcon = 'res/icons/calendar.svg';
+    calendarIcon = 'res/icons/calendar.svg',
+    // Visiting screen
+    cardIcon = "res/icons/card.svg",
+    unionIcon = "res/icons/union.svg";

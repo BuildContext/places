@@ -22,7 +22,7 @@ class SightCardCompleted extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: bgCard,
+        color: Theme.of(context).cardColor,
       ),
       child: Column(
         children: [
@@ -48,7 +48,7 @@ class SightCardCompleted extends StatelessWidget {
                     children: [
                       Text(
                         sight.type,
-                        style: smallBoldTextStyle(color: white),
+                        style: smallBoldTextStyle(color: lmWhiteColor),
                       ),
                       Row(
                         children: [
@@ -92,7 +92,8 @@ class SightCardCompleted extends StatelessWidget {
                       const SizedBox(height: 16),
                       Text(
                         sight.name,
-                        style: smallTitleTextStyle(color: secondary),
+                        style: smallTitleTextStyle(
+                            color: Theme.of(context).accentColor),
                         maxLines: 2,
                       ),
                       const SizedBox(
@@ -102,7 +103,7 @@ class SightCardCompleted extends StatelessWidget {
                         height: 28,
                         child: Text(
                           "Цель достигнута 12 окт. 2020",
-                          style: smallTextStyle(color: secondary2),
+                          style: smallTextStyle(color: lmSecondaryLightColor),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
                         ),
@@ -112,7 +113,7 @@ class SightCardCompleted extends StatelessWidget {
                       ),
                       Text(
                         sight.details,
-                        style: smallTextStyle(color: secondary2),
+                        style: smallTextStyle(color: lmSecondaryLightColor),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                       ),

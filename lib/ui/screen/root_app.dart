@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:places/constants/colours_const.dart';
 import 'package:places/constants/res_path_const.dart';
 import 'package:places/ui/screen/sight_list_screen.dart';
 import 'package:places/ui/screen/visiting_screen.dart';
@@ -49,10 +48,10 @@ class _RootAppState extends State<RootApp> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List.generate(items.length, (index) {
             return RawMaterialButton(
-              focusColor: white,
-              hoverColor: white,
-              highlightColor: white,
-              splashColor: white,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
               constraints: const BoxConstraints(
                   minWidth: 78.0, minHeight: 24.0, maxHeight: 30),
               onPressed: () {
@@ -64,7 +63,7 @@ class _RootAppState extends State<RootApp> {
                   Column(mainAxisAlignment: MainAxisAlignment.end, children: [
                 SvgPicture.asset(
                   items[index],
-                  color: black,
+                  color: Theme.of(context).accentColor,
                 ),
               ]),
             );

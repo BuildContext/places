@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/constants/colours_const.dart';
+import 'package:places/constants/res_path_const.dart';
+import 'package:places/constants/strings_const.dart';
 import 'package:places/constants/text_styles.dart';
 import 'package:places/ui/screen/sight_card_completed.dart';
 import 'package:places/ui/screen/sight_card_plan.dart';
@@ -33,9 +35,9 @@ class _VisitingScreenState extends State<VisitingScreen>
 
     return Scaffold(
       appBar: _CustomAppBar(
-          title: "Избранное",
+          title: visitingTitleAppBar,
           height: 108,
-          tabs: ["Хочу посетить", "Посетил"],
+          tabs: [visitingSwitcher1, visitingSwitcher2],
           tabController: tabController,
           state: this),
       body: TabBarView(
@@ -61,14 +63,14 @@ class _VisitingScreenState extends State<VisitingScreen>
                         const SizedBox(
                           height: 170,
                         ),
-                        SvgPicture.asset("res/icons/card.svg"),
+                        SvgPicture.asset(cardIcon),
                         const SizedBox(
                           height: 24,
                         ),
                         Text(
-                          "Пусто",
+                          visitingEmpty1,
                           style: subtitleTextStyle(
-                            color: secondary2.withOpacity(0.6),
+                            color: lmSecondaryLightColor.withOpacity(0.6),
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -76,9 +78,9 @@ class _VisitingScreenState extends State<VisitingScreen>
                           height: 8,
                         ),
                         Text(
-                          "Отмечайте понравившиеся\n места и они появиятся здесь.",
+                          visitingEmptyDescr1,
                           style: smallTextStyle(
-                            color: secondary2.withOpacity(0.6),
+                            color: lmSecondaryLightColor.withOpacity(0.6),
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -106,14 +108,14 @@ class _VisitingScreenState extends State<VisitingScreen>
                         const SizedBox(
                           height: 170,
                         ),
-                        SvgPicture.asset("res/icons/union.svg"),
+                        SvgPicture.asset(unionIcon),
                         const SizedBox(
                           height: 24,
                         ),
                         Text(
-                          "Пусто",
+                          visitingEmpty2,
                           style: subtitleTextStyle(
-                            color: secondary2.withOpacity(0.6),
+                            color: lmSecondaryLightColor.withOpacity(0.6),
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -121,9 +123,9 @@ class _VisitingScreenState extends State<VisitingScreen>
                           height: 8,
                         ),
                         Text(
-                          "Завершите маршрут, \n чтобы место попало сюда.",
+                          visitingEmptyDescr2,
                           style: smallTextStyle(
-                            color: secondary2.withOpacity(0.6),
+                            color: lmSecondaryLightColor.withOpacity(0.6),
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -170,7 +172,7 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                 child: Text(
                   title,
                   style: subtitleTextStyle(
-                    color: main,
+                    color: Theme.of(context).accentColor,
                   ),
                 ),
               ),
@@ -181,7 +183,7 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                 child: Container(
                   height: 40,
                   decoration: BoxDecoration(
-                    color: Color(0xFFF5F5F5),
+                    color: Theme.of(context).primaryColor,
                     borderRadius: BorderRadius.circular(40),
                   ),
                   child: Row(
@@ -197,8 +199,8 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                             child: Container(
                               decoration: BoxDecoration(
                                 color: tabController.index == i
-                                    ? secondary
-                                    : Color(0xFFF5F5F5),
+                                    ? lmSecondaryColor
+                                    : Theme.of(context).primaryColor,
                                 borderRadius: BorderRadius.circular(40),
                               ),
                               child: Center(
@@ -206,8 +208,9 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                                   tabs[i],
                                   style: smallBoldTextStyle(
                                       color: tabController.index == i
-                                          ? white
-                                          : secondary2.withOpacity(0.6)),
+                                          ? lmWhiteColor
+                                          : lmSecondaryLightColor
+                                              .withOpacity(0.6)),
                                 ),
                               ),
                             ),
