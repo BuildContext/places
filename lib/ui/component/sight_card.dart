@@ -1,21 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:places/constants/res_path_const.dart';
 import 'package:places/constants/strings_const.dart';
 import 'package:places/constants/text_styles.dart';
 import 'package:places/constants/colours_const.dart';
 import 'package:places/domain/sight.dart';
 
-/// SightCardPlan - карточка запланируемой доистопримечательности
-///  - используется как елемент в экране VisitingScreen,
+/// SightCard - виджет катрочки с кратким описанием
+///  доистопримечательности,
+///  - используется как елемент в экране SightListScreen,
 ///  - использует модель данных Sight
 
-class SightCardPlan extends StatelessWidget {
+class SightCard extends StatelessWidget {
   final Sight sight;
-
-  const SightCardPlan({this.sight});
+  const SightCard({this.sight});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class SightCardPlan extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: Theme.of(context).cardColor,
+          color: Theme.of(context).colorScheme.surface,
         ),
         child: Stack(
           children: [
@@ -41,7 +40,9 @@ class SightCardPlan extends StatelessWidget {
                           top: Radius.circular(16),
                         ),
                         image: DecorationImage(
-                            image: imageProvider, fit: BoxFit.cover),
+                          image: imageProvider,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     progressIndicatorBuilder:
@@ -78,22 +79,12 @@ class SightCardPlan extends StatelessWidget {
                             const SizedBox(
                               height: 2,
                             ),
-                            Container(
-                              height: 28,
-                              child: Text(
-                                sc_plan, //"Запланировано на 12 окт. 2020"
-                                style: smallTextStyle(color: lmGreenColour),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 2,
-                            ),
                             Text(
                               sight.details,
-                              style:
-                                  smallTextStyle(color: lmSecondaryLightColor),
+                              style: smallTextStyle(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .secondaryVariant),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                             ),
@@ -126,31 +117,17 @@ class SightCardPlan extends StatelessWidget {
                         children: [
                           Text(
                             sight.type,
-                            style: smallBoldTextStyle(color: lmWhiteColor),
+                            style: smallBoldTextStyle(color: white),
                           ),
-                          Row(
-                            children: [
-                              FloatingActionButton(
-                                elevation: 0.0,
-                                splashColor: rippleColour,
-                                onPressed: () {
-                                  print("calendarIcon");
-                                },
-                                backgroundColor: Colors.transparent,
-                                mini: true,
-                                child: SvgPicture.asset(calendarIcon),
-                              ),
-                              FloatingActionButton(
-                                elevation: 0.0,
-                                splashColor: rippleColour,
-                                onPressed: () {
-                                  print("closeIcon");
-                                },
-                                backgroundColor: Colors.transparent,
-                                mini: true,
-                                child: SvgPicture.asset(closeIcon),
-                              ),
-                            ],
+                          FloatingActionButton(
+                            elevation: 0.0,
+                            splashColor: rippleColour,
+                            onPressed: () {
+                              print("closeIcon");
+                            },
+                            backgroundColor: Colors.transparent,
+                            mini: true,
+                            child: SvgPicture.asset(closeIcon),
                           ),
                         ],
                       ),

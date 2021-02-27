@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:places/constants/res_path_const.dart';
 import 'package:places/mocks.dart';
-import 'package:places/ui/screen/sight_details.dart';
-import 'package:places/ui/screen/sight_list_screen.dart';
-import 'package:places/ui/screen/test.dart';
+import 'package:places/ui/screen/settings_screen.dart';
+import 'package:places/ui/screen/sight_details_screen.dart';
 import 'package:places/ui/screen/visiting_screen.dart';
 
 /// Точка входа в приложение
@@ -33,8 +32,8 @@ class _RootAppState extends State<RootApp> {
         SightDetails(
           sight: mocks[0],
         ),
-        MyTabbedPage(),
-        SightListScreen(),
+        VisitingScreen(),
+        SettingScreen(),
       ],
     );
   }

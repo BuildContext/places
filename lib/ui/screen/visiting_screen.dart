@@ -4,9 +4,10 @@ import 'package:places/constants/colours_const.dart';
 import 'package:places/constants/res_path_const.dart';
 import 'package:places/constants/strings_const.dart';
 import 'package:places/constants/text_styles.dart';
-import 'package:places/ui/screen/custom_switch.dart';
-import 'package:places/ui/screen/sight_card_completed.dart';
-import 'package:places/ui/screen/sight_card_plan.dart';
+import 'package:places/main.dart';
+//import 'package:places/ui/screen/custom_switch.dart';
+import 'package:places/ui/component/sight_card_completed.dart';
+import 'package:places/ui/component/sight_card_plan.dart';
 
 import '../../mocks.dart';
 
@@ -15,19 +16,7 @@ class VisitingScreen extends StatefulWidget {
   _VisitingScreenState createState() => _VisitingScreenState();
 }
 
-class _VisitingScreenState extends State<VisitingScreen>
-    with SingleTickerProviderStateMixin {
-  TabController tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    tabController = TabController(length: 2, vsync: this);
-    tabController.addListener(() {
-      setState(() {});
-    });
-  }
-
+class _VisitingScreenState extends State<VisitingScreen> {
   @override
   Widget build(BuildContext context) {
     ///mocks
@@ -35,221 +24,180 @@ class _VisitingScreenState extends State<VisitingScreen>
     List completedMocks = [mocks[3]];
 
     return Scaffold(
-      appBar: _CustomAppBar(
-          title: visitingTitleAppBar,
-          height: 108,
-          tabs: [visitingSwitcher1, visitingSwitcher2],
-          tabController: tabController,
-          state: this),
-      body: TabBarView(
-        controller: tabController,
-        children: [
-          planMocks.length > 0
-              ? SingleChildScrollView(
-                  child: Column(
-                    children: List.generate(planMocks.length, (index) {
-                      return AspectRatio(
-                        aspectRatio: 3 / 2,
-                        child: SightCardPlan(
-                          sight: planMocks[index],
-                        ),
-                      );
-                    }),
-                  ),
-                )
-              : Center(
-                  child: Container(
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 170,
-                        ),
-                        SvgPicture.asset(cardIcon),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        Text(
-                          visitingEmpty1,
-                          style: subtitleTextStyle(
-                            color: lmSecondaryLightColor.withOpacity(0.6),
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          visitingEmptyDescr1,
-                          style: smallTextStyle(
-                            color: lmSecondaryLightColor.withOpacity(0.6),
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-          completedMocks.length > 0
-              ? SingleChildScrollView(
-                  child: Column(
-                    children: List.generate(completedMocks.length, (index) {
-                      return AspectRatio(
-                        aspectRatio: 3 / 2,
-                        child: SightCardCompleted(
-                          sight: completedMocks[index],
-                        ),
-                      );
-                    }),
-                  ),
-                )
-              : Center(
-                  child: Container(
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 170,
-                        ),
-                        SvgPicture.asset(unionIcon),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        Text(
-                          visitingEmpty2,
-                          style: subtitleTextStyle(
-                            color: lmSecondaryLightColor.withOpacity(0.6),
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          visitingEmptyDescr2,
-                          style: smallTextStyle(
-                            color: lmSecondaryLightColor.withOpacity(0.6),
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-        ],
+      body: _VisitingTabBody(
+        title: visitingTitleAppBar,
+        tabs: [visitingSwitcher1, visitingSwitcher2],
+        planMocks: planMocks,
+        completedMocks: completedMocks,
       ),
     );
   }
 }
 
-class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class _VisitingTabBody extends StatelessWidget {
   final String title;
-  final double height;
   final List<String> tabs;
-  final TabController tabController;
-  final State state;
+  final List planMocks;
+  final List completedMocks;
 
-  const _CustomAppBar(
-      {Key key,
-      @required this.height,
-      this.title,
-      this.tabs,
-      this.tabController,
-      this.state})
-      : assert(height != null && title != null),
+  const _VisitingTabBody(
+      {Key key, this.title, this.tabs, this.planMocks, this.completedMocks})
+      : assert(title != null),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-        ),
-        child: Column(
-          children: [
-            Container(
-              height: 56,
-              child: Center(
-                child: Text(
-                  title,
-                  style: subtitleTextStyle(
-                    color: Theme.of(context).accentColor,
-                  ),
-                ),
-              ),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Center(
+            child: Text(
+              title,
+              style: TextStyle(color: Theme.of(context).accentColor), /////
             ),
-            CustomSwitch(
-              tabs: tabs,
-              tabController: tabController,
-            )
-          ],
+          ),
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(40),
+            child: Container(
+              width: 326,
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40),
+                color: Theme.of(context).colorScheme.surface,
+              ),
+              child: TabBar(
+                  indicator: BoxDecoration(
+                    color: isDarkTheme
+                        ? white
+                        : Theme.of(context).colorScheme.secondary, ////
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  unselectedLabelColor:
+                      Theme.of(context).colorScheme.secondaryVariant, ////
+                  labelColor: isDarkTheme
+                      ? Theme.of(context).colorScheme.secondary
+                      : white,
+                  tabs: [
+                    Tab(
+                      child: Text(
+                        tabs[0],
+                        style: smallBoldTextStyle(color: null),
+                      ),
+                    ),
+                    Tab(
+                      child: Text(
+                        tabs[1],
+                        style: smallBoldTextStyle(color: null),
+                      ),
+                    ),
+                  ]),
+            ),
+          ),
+        ),
+        body: TabBarView(
+          children: [planTabView(planMocks), completedTabView(completedMocks)],
         ),
       ),
+      //bottomNavigationBar: BottomNavigationMenu(),
     );
   }
 
-  @override
-  Size get preferredSize => Size.fromHeight(height);
-}
-
-class _CustomSwitcher extends StatefulWidget {
-  final List<String> tabs;
-  final TabController tabController;
-
-  const _CustomSwitcher({
-    Key key,
-    this.tabs,
-    this.tabController,
-  }) : super(key: key);
-
-  @override
-  __CustomSwitcherState createState() => __CustomSwitcherState();
-}
-
-class __CustomSwitcherState extends State<_CustomSwitcher> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 52,
-      child: Center(
-        child: Container(
-          height: 40,
-          decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
-            borderRadius: BorderRadius.circular(40),
-          ),
-          child: Row(
-            children: [
-              for (int i = 0; i < widget.tabs.length; i++)
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        widget.tabController.index = i;
-                      });
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: widget.tabController.index == i
-                            ? lmSecondaryColor
-                            : Theme.of(context).primaryColor,
-                        borderRadius: BorderRadius.circular(40),
-                      ),
-                      child: Center(
-                        child: Text(
-                          widget.tabs[i],
-                          style: smallBoldTextStyle(
-                              color: widget.tabController.index == i
-                                  ? lmWhiteColor
-                                  : lmSecondaryLightColor.withOpacity(0.6)),
-                        ),
-                      ),
-                    ),
+  Widget completedTabView(completedMocks) {
+    return completedMocks.length > 0
+        ? SingleChildScrollView(
+            child: Column(
+              children: List.generate(completedMocks.length, (index) {
+                return AspectRatio(
+                  aspectRatio: 3 / 2,
+                  child: SightCardCompleted(
+                    sight: completedMocks[index],
                   ),
-                ),
-            ],
-          ),
-        ),
-      ),
-    );
+                );
+              }),
+            ),
+          )
+        : Center(
+            child: Container(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 170,
+                  ),
+                  SvgPicture.asset(unionIcon),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  Text(
+                    visitingEmpty2,
+                    style: subtitleTextStyle(
+                      color: lmSecondaryLightColor.withOpacity(0.6),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    visitingEmptyDescr2,
+                    style: smallTextStyle(
+                      color: lmSecondaryLightColor.withOpacity(0.6),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+          );
+  }
+
+  Widget planTabView(planMocks) {
+    return planMocks.length > 0
+        ? SingleChildScrollView(
+            child: Column(
+              children: List.generate(planMocks.length, (index) {
+                return AspectRatio(
+                  aspectRatio: 3 / 2,
+                  child: SightCardPlan(
+                    sight: planMocks[index],
+                  ),
+                );
+              }),
+            ),
+          )
+        : Center(
+            child: Container(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 170,
+                  ),
+                  SvgPicture.asset(cardIcon),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  Text(
+                    visitingEmpty1,
+                    style: subtitleTextStyle(
+                      color: lmSecondaryLightColor.withOpacity(0.6),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    visitingEmptyDescr1,
+                    style: smallTextStyle(
+                      color: lmSecondaryLightColor.withOpacity(0.6),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+          );
   }
 }

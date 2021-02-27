@@ -26,7 +26,7 @@ class SightCardCompleted extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: Theme.of(context).cardColor,
+          color: Theme.of(context).colorScheme.surface,
         ),
         child: Stack(
           children: [
@@ -85,7 +85,9 @@ class SightCardCompleted extends StatelessWidget {
                               child: Text(
                                 sc_completed,
                                 style: smallTextStyle(
-                                    color: lmSecondaryLightColor),
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .secondaryVariant),
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
                               ),
@@ -95,8 +97,10 @@ class SightCardCompleted extends StatelessWidget {
                             ),
                             Text(
                               sight.details,
-                              style:
-                                  smallTextStyle(color: lmSecondaryLightColor),
+                              style: smallTextStyle(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .secondaryVariant),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                             ),
@@ -129,7 +133,7 @@ class SightCardCompleted extends StatelessWidget {
                         children: [
                           Text(
                             sight.type,
-                            style: smallBoldTextStyle(color: lmWhiteColor),
+                            style: smallBoldTextStyle(color: white),
                           ),
                           Row(
                             children: [

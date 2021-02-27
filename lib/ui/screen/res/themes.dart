@@ -9,16 +9,47 @@ final basicTheme = ThemeData(
 );
 
 final lightTheme = basicTheme.copyWith(
-    primaryColor: lmWhiteColor,
+    primaryColor: white,
     accentColor: black,
-    scaffoldBackgroundColor: lmWhiteColor,
-    backgroundColor: lmWhiteColor,
-    cardColor: lmCardColor);
+    scaffoldBackgroundColor: white,
+    backgroundColor: white,
+    colorScheme: ColorScheme(
+        primary: lmMainColor,
+        primaryVariant: Colors.transparent,
+        secondary: lmSecondaryColor,
+        secondaryVariant: lmSecondaryLightColor,
+        surface: lmCardColor,
+        background: white,
+        error: lmRedColor,
+        onPrimary: Colors.transparent,
+        onSecondary: Colors.transparent,
+        onSurface: Colors.transparent,
+        onBackground: lmYellowColor,
+        onError: lmGreenColour,
+        brightness: Brightness.light));
 
 final darkTheme = basicTheme.copyWith(
-  primaryColor: dmDarkColor,
-  accentColor: lmWhiteColor,
-  scaffoldBackgroundColor: dmSecondaryColor,
-  backgroundColor: dmSecondaryColor,
-  cardColor: dmDarkColor,
-);
+    primaryColor: black, //text colour
+    accentColor: white,
+    scaffoldBackgroundColor: dmMainColor,
+    backgroundColor: dmMainColor,
+    colorScheme: ColorScheme(
+        primary: dmMainColor,
+        primaryVariant: Colors.transparent,
+        secondary: dmSecondaryColor,
+        secondaryVariant: dmSecondaryLightColor,
+        surface: dmCardColor,
+        background: dmMainColor,
+        error: dmRedColor,
+        onPrimary: Colors.transparent,
+        onSecondary: Colors.transparent,
+        onSurface: Colors.transparent,
+        onBackground: dmYellowColor,
+        onError: dmGreenColor,
+        brightness: Brightness.dark));
+
+class Styles {
+  static ThemeData themeData(bool isDarkTheme, BuildContext context) {
+    return isDarkTheme ? darkTheme : lightTheme;
+  }
+}

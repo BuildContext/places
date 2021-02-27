@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:places/constants/strings_const.dart';
 import 'package:places/constants/text_styles.dart';
 import 'package:places/mocks.dart';
-import 'package:places/ui/screen/sight_card.dart';
+import 'package:places/ui/component/sight_card.dart';
 
 ///  SightListScreen - экран который рендерит массив виджетов SightCard
 ///  с кратким описанием доистопримечательностей,

@@ -12,6 +12,8 @@ dependencies:
   cupertino_icons: ^1.0.0
   cached_network_image: ^2.4.1
   flutter_svg: ^0.20.0-nullsafety.3
+  shared_preferences: 
+  provider: 
 
 
 
