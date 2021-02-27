@@ -3,7 +3,7 @@ import 'package:places/constants/colours_const.dart';
 
 final basicTheme = ThemeData(
   fontFamily: 'Roboto',
-  splashColor: Colors.transparent,
+  splashColor: rippleColour,
   highlightColor: Colors.transparent,
   hoverColor: Colors.transparent,
 );

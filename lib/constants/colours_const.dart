@@ -19,3 +19,5 @@ const black = Colors.black,
     dmYellowColor = Color(0xFFFFE769),
     dmRedColor = Color(0xFFCF2A2A),
     dmWhiteColor = Colors.white;
+
+var rippleColour = Color(0xFFC4C4C4).withOpacity(0.5);

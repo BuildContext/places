@@ -22,7 +22,7 @@ class SightDetails extends StatelessWidget {
         child: Column(
           children: [
             picturesAndBackButton(),
-            descriptionAndButtoms(),
+            descriptionAndButtons(),
           ],
         ),
       ),
@@ -53,12 +53,17 @@ class SightDetails extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   color: lmWhiteColor,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 6),
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    color: black,
-                    size: 15,
+                child: InkWell(
+                  onTap: () {
+                    print("backDetails");
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 6),
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      color: black,
+                      size: 15,
+                    ),
                   ),
                 ),
               ),
@@ -67,7 +72,7 @@ class SightDetails extends StatelessWidget {
         ));
   }
 
-  Widget descriptionAndButtoms() {
+  Widget descriptionAndButtons() {
     return Container(
       child: Padding(
         padding: const EdgeInsets.only(top: 24, left: 16, right: 16),
@@ -102,29 +107,34 @@ class SightDetails extends StatelessWidget {
               style: smallTextStyle(color: lmSecondaryColor),
             ),
             const SizedBox(height: 24),
-            Container(
-              width: double.infinity,
-              height: 48,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: lmGreenColour,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.directions_rounded,
-                    size: 24,
-                    color: lmWhiteColor,
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    sight_details_directions,
-                    style: buttonBigTextStyle(color: lmWhiteColor),
-                  ),
-                ],
+            InkWell(
+              onTap: () {
+                print("build a route");
+              },
+              child: Container(
+                width: double.infinity,
+                height: 48,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: lmGreenColour,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.directions_rounded,
+                      size: 24,
+                      color: lmWhiteColor,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      sight_details_directions,
+                      style: buttonBigTextStyle(color: lmWhiteColor),
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 24),

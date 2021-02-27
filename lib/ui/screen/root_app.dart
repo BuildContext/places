@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:places/constants/res_path_const.dart';
+import 'package:places/mocks.dart';
+import 'package:places/ui/screen/sight_details.dart';
 import 'package:places/ui/screen/sight_list_screen.dart';
+import 'package:places/ui/screen/test.dart';
 import 'package:places/ui/screen/visiting_screen.dart';
 
-//Точка входа в приложение
+/// Точка входа в приложение
 
 class RootApp extends StatefulWidget {
   @override
@@ -27,8 +30,10 @@ class _RootAppState extends State<RootApp> {
       index: pageIndex,
       children: [
         VisitingScreen(),
-        VisitingScreen(),
-        SightListScreen(),
+        SightDetails(
+          sight: mocks[0],
+        ),
+        MyTabbedPage(),
         SightListScreen(),
       ],
     );

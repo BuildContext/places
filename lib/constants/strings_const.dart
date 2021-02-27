@@ -8,6 +8,12 @@ const String
     //SightListScreen
     sigth_list_screen_title = "Список интересных мест",
 
+    //SightCardCompleted
+    sc_completed = "Цель достигнута 12 окт. 2020",
+
+    //SightCardPlan
+    sc_plan = "Запланировано на 12 окт. 2020",
+
     // VisitingScreen
     visitingTitleAppBar = "Избранное",
     visitingSwitcher1 = "Хочу посетить",
@@ -16,4 +22,5 @@ const String
     visitingEmpty2 = "Пусто",
     visitingEmptyDescr1 =
         "Отмечайте понравившиеся\n места и они появиятся здесь.",
-    visitingEmptyDescr2 = "Завершите маршрут, \n чтобы место попало сюда.";
+    visitingEmptyDescr2 = "Завершите маршрут, \n чтобы место попало сюда.",
+    text_error_network_connect = "Нету Интернета";

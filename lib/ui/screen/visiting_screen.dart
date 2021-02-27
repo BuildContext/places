@@ -4,6 +4,7 @@ import 'package:places/constants/colours_const.dart';
 import 'package:places/constants/res_path_const.dart';
 import 'package:places/constants/strings_const.dart';
 import 'package:places/constants/text_styles.dart';
+import 'package:places/ui/screen/custom_switch.dart';
 import 'package:places/ui/screen/sight_card_completed.dart';
 import 'package:places/ui/screen/sight_card_plan.dart';
 
@@ -164,7 +165,6 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           horizontal: 16,
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               height: 56,
@@ -177,49 +177,9 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                 ),
               ),
             ),
-            Container(
-              height: 52,
-              child: Center(
-                child: Container(
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(40),
-                  ),
-                  child: Row(
-                    children: [
-                      for (int i = 0; i < tabs.length; i++)
-                        Expanded(
-                          child: InkWell(
-                            onTap: () {
-                              state.setState(() {
-                                tabController.index = i;
-                              });
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: tabController.index == i
-                                    ? lmSecondaryColor
-                                    : Theme.of(context).primaryColor,
-                                borderRadius: BorderRadius.circular(40),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  tabs[i],
-                                  style: smallBoldTextStyle(
-                                      color: tabController.index == i
-                                          ? lmWhiteColor
-                                          : lmSecondaryLightColor
-                                              .withOpacity(0.6)),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                    ],
-                  ),
-                ),
-              ),
+            CustomSwitch(
+              tabs: tabs,
+              tabController: tabController,
             )
           ],
         ),
@@ -229,4 +189,67 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Size get preferredSize => Size.fromHeight(height);
+}
+
+class _CustomSwitcher extends StatefulWidget {
+  final List<String> tabs;
+  final TabController tabController;
+
+  const _CustomSwitcher({
+    Key key,
+    this.tabs,
+    this.tabController,
+  }) : super(key: key);
+
+  @override
+  __CustomSwitcherState createState() => __CustomSwitcherState();
+}
+
+class __CustomSwitcherState extends State<_CustomSwitcher> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 52,
+      child: Center(
+        child: Container(
+          height: 40,
+          decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
+            borderRadius: BorderRadius.circular(40),
+          ),
+          child: Row(
+            children: [
+              for (int i = 0; i < widget.tabs.length; i++)
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        widget.tabController.index = i;
+                      });
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: widget.tabController.index == i
+                            ? lmSecondaryColor
+                            : Theme.of(context).primaryColor,
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                      child: Center(
+                        child: Text(
+                          widget.tabs[i],
+                          style: smallBoldTextStyle(
+                              color: widget.tabController.index == i
+                                  ? lmWhiteColor
+                                  : lmSecondaryLightColor.withOpacity(0.6)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
