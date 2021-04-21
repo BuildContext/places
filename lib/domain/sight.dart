@@ -1,53 +1,19 @@
-import 'package:places/domain/geo_point.dart';
-import 'package:places/domain/sight_type/sight_type.dart';
+///Модель данных достопримечательности - Sight
 
-/// Место
 class Sight {
-  final int id;
+  //название достопримечательности
   final String name;
+  //координаты места
+  final double lat, lon;
+  //путь к фотографии в интернете
   final String url;
+  //путь к фотографии локально
+  final String localPath;
+  //описание достопримечательности
   final String details;
-  final GeoPoint point;
-  final SightType type;
+  //тип достопримечательности (кафе, музей, площадь)
+  final String type;
 
-  Sight({
-    this.id,
-    this.name,
-    this.url,
-    this.details,
-    this.type,
-    this.point,
-  });
-
-  Sight copyWith({
-    int id,
-    String name,
-    String url,
-    String details,
-    GeoPoint point,
-    SightType type,
-  }) {
-    if ((id == null || identical(id, this.id)) &&
-        (name == null || identical(name, this.name)) &&
-        (url == null || identical(url, this.url)) &&
-        (details == null || identical(details, this.details)) &&
-        (point == null || identical(point, this.point)) &&
-        (type == null || identical(type, this.type))) {
-      return this;
-    }
-
-    return Sight(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      url: url ?? this.url,
-      details: details ?? this.details,
-      point: point ?? this.point,
-      type: type ?? this.type,
-    );
-  }
-
-  @override
-  String toString() {
-    return 'Sight(id: $id name: $name)';
-  }
+  const Sight(
+      {this.name, this.lat, this.lon, this.url, this.details, this.type,  this.localPath});
 }
