@@ -7,8 +7,8 @@ import 'package:places/constants/colours_const.dart';
 import 'package:places/domain/sight.dart';
 
 /// SightCardPlan - карточка запланируемой доистопримечательности
-///  - используется как елемент в экране VisitingScreen,
-///  - использует модель данных Sight
+///  - используется как елемент в экране [VisitingScreen],
+///  - использует модель данных [Sight]
 
 class SightCardPlan extends StatelessWidget {
   final Sight sight;

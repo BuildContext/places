@@ -7,7 +7,7 @@ import 'package:places/domain/sight.dart';
 
 /// SightCard - виджет катрочки с кратким описанием
 ///  доистопримечательности,
-///  - используется как елемент в экране SightListScreen,
+///  - используется как елемент в экране [SightListScreen],
 ///  - использует модель данных Sight
 
 class SightCard extends StatelessWidget {

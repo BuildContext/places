@@ -7,8 +7,8 @@ import 'package:places/constants/colours_const.dart';
 import 'package:places/domain/sight.dart';
 
 /// SightCardCompleted - карточка посещенной доистопримечательности
-///  - используется как елемент в экране VisitingScreen,
-///  - использует модель данных Sight
+///  - используется как елемент в экране [VisitingScreen],
+///  - использует модель данных [Sight]
 
 class SightCardCompleted extends StatelessWidget {
   final Sight sight;

@@ -18,7 +18,7 @@ class _SightListScreenState extends State<SightListScreen> {
     return Scaffold(
       appBar: _CustomAppBar(
         title: sigth_list_screen_title,
-        height: 135,
+        height: 136,
       ),
       body: SingleChildScrollView(
         child: Column(

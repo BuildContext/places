@@ -26,7 +26,7 @@ class _RootAppState extends State<RootApp> {
     return IndexedStack(
       index: pageIndex,
       children: [
-        VisitingScreen(),
+        SightListScreen(),
         VisitingScreen(),
         SightListScreen(),
         SightListScreen(),
