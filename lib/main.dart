@@ -13,7 +13,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: RootApp(),
-      title: "MyFirstTitle",
+      title: "MyFirstTitles",
       theme: isDarkTheme ? darkTheme : lightTheme,
       debugShowCheckedModeBanner: false,
     );
