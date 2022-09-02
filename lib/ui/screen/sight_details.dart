@@ -22,7 +22,7 @@ class SightDetails extends StatelessWidget {
         child: Column(
           children: [
             picturesAndBackButton(),
-            descriptionAndButtoms(),
+            descriptionAndButtons(),
           ],
         ),
       ),
@@ -67,7 +67,7 @@ class SightDetails extends StatelessWidget {
         ));
   }
 
-  Widget descriptionAndButtoms() {
+  Widget descriptionAndButtons() {
     return Container(
       child: Padding(
         padding: const EdgeInsets.only(top: 24, left: 16, right: 16),
