@@ -14,6 +14,13 @@ class Sight {
   //тип достопримечательности (кафе, музей, площадь)
   final String type;
 
-  const Sight(
-      {this.name, this.lat, this.lon, this.url, this.details, this.type,  this.localPath});
+  const Sight({
+    required this.name,
+    required this.lat,
+    required this.lon,
+    required this.url,
+    required this.details,
+    required this.type,
+    required this.localPath,
+  });
 }

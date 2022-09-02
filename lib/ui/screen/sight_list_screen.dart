@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:places/constants/strings_const.dart';
 import 'package:places/constants/text_styles.dart';
 import 'package:places/mocks.dart';
-import 'package:places/ui/screen/sight_card.dart';
-
-///  SightListScreen - экран который рендерит массив виджетов SightCard
-///  с кратким описанием доистопримечательностей,
+import 'package:places/ui/widgets/card/sight_card.dart';
+import 'sight_details_screen.dart';
+/**
+ *  SightListScreen - основной экран который
+ *  отображает отфильтрованные карточки мест [SightCard]
+ *  с кратким описанием доистопримечательностей.
+ *  На этом экране есть возможность:
+ *  1. добавить место в избранное 
+ *  2. перейти на экран фильтров
+ *  3. перейти на экран деталей места [SightDetailScreen]
+ */
 
 class SightListScreen extends StatefulWidget {
   @override
@@ -41,11 +48,10 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final double height;
 
   const _CustomAppBar({
-    Key key,
-    @required this.height,
-    this.title,
-  })  : assert(height != null && title != null),
-        super(key: key);
+    Key? key,
+    required this.height,
+    required this.title,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -4,8 +4,7 @@ import 'package:places/constants/colours_const.dart';
 import 'package:places/constants/res_path_const.dart';
 import 'package:places/constants/strings_const.dart';
 import 'package:places/constants/text_styles.dart';
-import 'package:places/ui/screen/sight_card_completed.dart';
-import 'package:places/ui/screen/sight_card_plan.dart';
+import 'package:places/ui/widgets/card/sight_card.dart';
 
 import '../../mocks.dart';
 
@@ -16,7 +15,7 @@ class VisitingScreen extends StatefulWidget {
 
 class _VisitingScreenState extends State<VisitingScreen>
     with SingleTickerProviderStateMixin {
-  TabController tabController;
+  late TabController tabController;
 
   @override
   void initState() {
@@ -29,17 +28,17 @@ class _VisitingScreenState extends State<VisitingScreen>
 
   @override
   Widget build(BuildContext context) {
-    ///mocks
+    //TODO: mock data
     List planMocks = [mocks[1], mocks[0], mocks[4]];
     List completedMocks = [mocks[3]];
 
     return Scaffold(
       appBar: _CustomAppBar(
-          title: visitingTitleAppBar,
-          height: 108,
-          tabs: [visitingSwitcher1, visitingSwitcher2],
-          tabController: tabController,
-          state: this),
+        title: visitingTitleAppBar,
+        height: 108,
+        tabs: [visitingSwitcher1, visitingSwitcher2],
+        tabController: tabController,
+      ),
       body: TabBarView(
         controller: tabController,
         children: [
@@ -49,8 +48,14 @@ class _VisitingScreenState extends State<VisitingScreen>
                     children: List.generate(planMocks.length, (index) {
                       return AspectRatio(
                         aspectRatio: 3 / 2,
-                        child: SightCardPlan(
+                        child: SightCardPlanned(
                           sight: planMocks[index],
+                          onTapDateSelectorButton: (() {
+                            print('выбор даты');
+                          }),
+                          onTapDeleteButton: () {
+                            print('удалить');
+                          },
                         ),
                       );
                     }),
@@ -94,8 +99,14 @@ class _VisitingScreenState extends State<VisitingScreen>
                     children: List.generate(completedMocks.length, (index) {
                       return AspectRatio(
                         aspectRatio: 3 / 2,
-                        child: SightCardCompleted(
+                        child: SightCardVisited(
                           sight: completedMocks[index],
+                          onTapShareButton: () {
+                            print('share');
+                          },
+                          onTapDeleteButton: () {
+                            print('delete');
+                          },
                         ),
                       );
                     }),
@@ -139,23 +150,28 @@ class _VisitingScreenState extends State<VisitingScreen>
   }
 }
 
-class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class _CustomAppBar extends StatefulWidget with PreferredSizeWidget {
   final String title;
   final double height;
   final List<String> tabs;
   final TabController tabController;
-  final State state;
 
-  const _CustomAppBar(
-      {Key key,
-      @required this.height,
-      this.title,
-      this.tabs,
-      this.tabController,
-      this.state})
-      : assert(height != null && title != null),
-        super(key: key);
+  const _CustomAppBar({
+    Key? key,
+    required this.height,
+    required this.title,
+    required this.tabs,
+    required this.tabController,
+  }) : super(key: key);
 
+  @override
+  State<_CustomAppBar> createState() => _CustomAppBarState();
+
+  @override
+  Size get preferredSize => Size.fromHeight(height);
+}
+
+class _CustomAppBarState extends State<_CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -170,7 +186,7 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
               height: 56,
               child: Center(
                 child: Text(
-                  title,
+                  widget.title,
                   style: subtitleTextStyle(
                     color: Theme.of(context).accentColor,
                   ),
@@ -188,26 +204,26 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                   ),
                   child: Row(
                     children: [
-                      for (int i = 0; i < tabs.length; i++)
+                      for (int i = 0; i < widget.tabs.length; i++)
                         Expanded(
                           child: InkWell(
                             onTap: () {
-                              state.setState(() {
-                                tabController.index = i;
+                              setState(() {
+                                widget.tabController.index = i;
                               });
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                color: tabController.index == i
+                                color: widget.tabController.index == i
                                     ? lmSecondaryColor
                                     : Theme.of(context).primaryColor,
                                 borderRadius: BorderRadius.circular(40),
                               ),
                               child: Center(
                                 child: Text(
-                                  tabs[i],
+                                  widget.tabs[i],
                                   style: smallBoldTextStyle(
-                                      color: tabController.index == i
+                                      color: widget.tabController.index == i
                                           ? lmWhiteColor
                                           : lmSecondaryLightColor
                                               .withOpacity(0.6)),
@@ -226,7 +242,4 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       ),
     );
   }
-
-  @override
-  Size get preferredSize => Size.fromHeight(height);
 }

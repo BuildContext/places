@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-TextStyle largeTitleTextStyle({color}) {
+TextStyle largeTitleTextStyle({Color? color}) {
   return TextStyle(
     fontSize: 32,
     color: color,
@@ -8,7 +8,7 @@ TextStyle largeTitleTextStyle({color}) {
   );
 }
 
-TextStyle mediumTitleTextStyle({color}) {
+TextStyle mediumTitleTextStyle({Color? color}) {
   return TextStyle(
     fontSize: 24,
     color: color,
@@ -16,21 +16,15 @@ TextStyle mediumTitleTextStyle({color}) {
   );
 }
 
-TextStyle smallTitleTextStyle({color}){
-  return TextStyle(
-      color: color,
-      fontWeight: FontWeight.w500,
-      fontSize: 16);
+TextStyle smallTitleTextStyle({Color? color}) {
+  return TextStyle(color: color, fontWeight: FontWeight.w500, fontSize: 16);
 }
 
-TextStyle subtitleTextStyle({color}){
-  return TextStyle(
-      color: color,
-      fontWeight: FontWeight.w500,
-      fontSize: 18);
+TextStyle subtitleTextStyle({Color? color}) {
+  return TextStyle(color: color, fontWeight: FontWeight.w500, fontSize: 18);
 }
 
-TextStyle smallBoldTextStyle({color}) {
+TextStyle smallBoldTextStyle({Color? color}) {
   return TextStyle(
     fontSize: 14,
     color: color,
@@ -38,7 +32,7 @@ TextStyle smallBoldTextStyle({color}) {
   );
 }
 
-TextStyle smallTextStyle({color}){
+TextStyle smallTextStyle({Color? color}) {
   return TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
@@ -46,7 +40,7 @@ TextStyle smallTextStyle({color}){
   );
 }
 
-TextStyle buttonBigTextStyle({color}){
+TextStyle buttonBigTextStyle({Color? color}) {
   return TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w700,

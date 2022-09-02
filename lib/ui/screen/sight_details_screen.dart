@@ -4,16 +4,18 @@ import 'package:places/constants/text_styles.dart';
 import 'package:places/constants/colours_const.dart';
 import 'package:places/domain/sight.dart';
 
-/// SightDetails - модель экрана с подробной информацией
+/// экран с подробной информацией
 /// о интересном месте, а также
-///  кнопками "Проложить маршрут", "В избранное"
+/// кнопками "Проложить маршрут", "В избранное"
 /// и "Запланировать"
 /// - использует модель данных Sight
 
-class SightDetails extends StatelessWidget {
+class SightDetailScreen extends StatelessWidget {
   final Sight sight;
 
-  const SightDetails({this.sight});
+  const SightDetailScreen({
+    required this.sight,
+  });
 
   @override
   Widget build(BuildContext context) {

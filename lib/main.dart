@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:places/ui/screen/res/themes.dart';
 import 'package:places/ui/screen/root_app.dart';
+
+import 'ui/res/themes.dart';
 
 bool isDarkTheme = false;
 
@@ -13,7 +14,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: RootApp(),
-      title: "MyFirstTitles",
+      title: "places",
       theme: isDarkTheme ? darkTheme : lightTheme,
       debugShowCheckedModeBanner: false,
     );
