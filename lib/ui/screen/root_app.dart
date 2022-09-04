@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:places/constants/res_path_const.dart';
+import 'package:places/mocks.dart';
+import 'package:places/ui/screen/sight_details_screen.dart';
 import 'package:places/ui/screen/sight_list_screen.dart';
 import 'package:places/ui/screen/visiting_screen.dart';
 
@@ -28,7 +30,9 @@ class _RootAppState extends State<RootApp> {
       children: [
         SightListScreen(),
         VisitingScreen(),
-        SightListScreen(),
+        SightDetailScreen(
+          sight: MockData.sights[0],
+        ),
         SightListScreen(),
       ],
     );

@@ -29,11 +29,11 @@ class _SightListScreenState extends State<SightListScreen> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: List.generate(mocks.length, (index) {
+          children: List.generate(MockData.sights.length, (index) {
             return AspectRatio(
               aspectRatio: 3 / 2,
               child: SightCard(
-                sight: mocks[index],
+                sight: MockData.sights[index],
               ),
             );
           }),

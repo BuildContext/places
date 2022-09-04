@@ -29,8 +29,12 @@ class _VisitingScreenState extends State<VisitingScreen>
   @override
   Widget build(BuildContext context) {
     //TODO: mock data
-    List planMocks = [mocks[1], mocks[0], mocks[4]];
-    List completedMocks = [mocks[3]];
+    List planMocks = [
+      MockData.sights[1],
+      MockData.sights[0],
+      MockData.sights[4]
+    ];
+    List completedMocks = [MockData.sights[3]];
 
     return Scaffold(
       appBar: _CustomAppBar(
