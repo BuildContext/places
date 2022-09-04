@@ -104,30 +104,12 @@ class SightDetailScreen extends StatelessWidget {
               style: smallTextStyle(color: lmSecondaryColor),
             ),
             const SizedBox(height: 24),
-            Container(
-              width: double.infinity,
-              height: 48,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: lmGreenColour,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.directions_rounded,
-                    size: 24,
-                    color: lmWhiteColor,
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    sight_details_directions,
-                    style: buttonBigTextStyle(color: lmWhiteColor),
-                  ),
-                ],
-              ),
+            DetailBigButton(
+              onTap: (() {
+                print('ПОСТРОИТЬ МАРШРУТ');
+              }),
+              icon: Icons.directions_rounded,
+              text: sight_details_directions,
             ),
             const SizedBox(height: 24),
             Divider(
@@ -180,6 +162,56 @@ class SightDetailScreen extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class DetailBigButton extends StatelessWidget {
+  final VoidCallback? onTap;
+  final IconData? icon;
+  final Color? iconColor;
+  final String text;
+  final Color? textColor;
+  const DetailBigButton({
+    Key? key,
+    this.onTap,
+    this.icon,
+    this.iconColor = lmWhiteColor,
+    required this.text,
+    this.textColor = lmWhiteColor,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        height: 48,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: lmGreenColour,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (icon != null) ...[
+              Icon(
+                icon,
+                size: 24,
+                color: iconColor,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+            ],
+            Text(
+              text,
+              style: buttonBigTextStyle(color: textColor),
             ),
           ],
         ),
