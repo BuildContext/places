@@ -1,4 +1,4 @@
-package boyko.inc.places
+package com.example.places
 
 import io.flutter.embedding.android.FlutterActivity
 

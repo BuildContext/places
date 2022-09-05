@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:places/constants/res_path_const.dart';
 import 'package:places/mocks.dart';
-import 'package:places/ui/screen/sight_details_screen.dart';
-import 'package:places/ui/screen/sight_list_screen.dart';
-import 'package:places/ui/screen/visiting_screen.dart';
+import 'package:places/ui/screens/sight_details_screen.dart';
+import 'package:places/ui/screens/sight_list_screen.dart';
+import 'package:places/ui/screens/visiting_screen.dart';
 
 //Точка входа в приложение
 

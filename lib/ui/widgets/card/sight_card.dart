@@ -71,7 +71,9 @@ class SightCard extends StatelessWidget {
                   sight.type,
                   style: smallBoldTextStyle(color: lmWhiteColor),
                 ),
-                ...cardButtons,
+                Row(
+                  children: cardButtons,
+                ),
               ],
             ),
           ),
