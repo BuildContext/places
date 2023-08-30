@@ -1,16 +1,16 @@
 name: places
-description: A new Flutter project.
+description: Places is a training project conducted by Surf.
 publish_to: 'none'
 version: 1.0.1+1
 
 environment:
-  sdk: ">=2.17.6 <3.0.0"
+  sdk: ">=2.18.4 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
-  flutter_svg: ^0.20.0-nullsafety.3
+  flutter_svg: ^2.0.7
 
 
 
@@ -32,4 +32,5 @@ flutter:
     - res/images/
     - res/icons/
     - res/icons/bottom_nav/
+    - res/icons/filter/
   uses-material-design: true

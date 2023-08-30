@@ -38,9 +38,9 @@ class _VisitingScreenState extends State<VisitingScreen>
 
     return Scaffold(
       appBar: _CustomAppBar(
-        title: visitingTitleAppBar,
+        title: AppStrings.visitingTitleAppBar,
         height: 108,
-        tabs: [visitingSwitcher1, visitingSwitcher2],
+        tabs: [AppStrings.visitingSwitcher1, AppStrings.visitingSwitcher2],
         tabController: tabController,
       ),
       body: TabBarView(
@@ -72,14 +72,15 @@ class _VisitingScreenState extends State<VisitingScreen>
                         const SizedBox(
                           height: 170,
                         ),
-                        SvgPicture.asset(cardIcon),
+                        SvgPicture.asset(AppAssets.cardIcon),
                         const SizedBox(
                           height: 24,
                         ),
                         Text(
-                          visitingEmpty1,
-                          style: subtitleTextStyle(
-                            color: lmSecondaryLightColor.withOpacity(0.6),
+                          AppStrings.visitingEmpty1,
+                          style: AppTextStyles.subtitleTextStyle(
+                            color: AppColors.lmSecondaryLightColor
+                                .withOpacity(0.6),
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -87,9 +88,10 @@ class _VisitingScreenState extends State<VisitingScreen>
                           height: 8,
                         ),
                         Text(
-                          visitingEmptyDescr1,
-                          style: smallTextStyle(
-                            color: lmSecondaryLightColor.withOpacity(0.6),
+                          AppStrings.visitingEmptyDescr1,
+                          style: AppTextStyles.smallTextStyle(
+                            color: AppColors.lmSecondaryLightColor
+                                .withOpacity(0.6),
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -123,14 +125,15 @@ class _VisitingScreenState extends State<VisitingScreen>
                         const SizedBox(
                           height: 170,
                         ),
-                        SvgPicture.asset(unionIcon),
+                        SvgPicture.asset(AppAssets.unionIcon),
                         const SizedBox(
                           height: 24,
                         ),
                         Text(
-                          visitingEmpty2,
-                          style: subtitleTextStyle(
-                            color: lmSecondaryLightColor.withOpacity(0.6),
+                          AppStrings.visitingEmpty2,
+                          style: AppTextStyles.subtitleTextStyle(
+                            color: AppColors.lmSecondaryLightColor
+                                .withOpacity(0.6),
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -138,9 +141,10 @@ class _VisitingScreenState extends State<VisitingScreen>
                           height: 8,
                         ),
                         Text(
-                          visitingEmptyDescr2,
-                          style: smallTextStyle(
-                            color: lmSecondaryLightColor.withOpacity(0.6),
+                          AppStrings.visitingEmptyDescr2,
+                          style: AppTextStyles.smallTextStyle(
+                            color: AppColors.lmSecondaryLightColor
+                                .withOpacity(0.6),
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -154,7 +158,7 @@ class _VisitingScreenState extends State<VisitingScreen>
   }
 }
 
-class _CustomAppBar extends StatefulWidget with PreferredSizeWidget {
+class _CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
   final double height;
   final List<String> tabs;
@@ -191,8 +195,8 @@ class _CustomAppBarState extends State<_CustomAppBar> {
               child: Center(
                 child: Text(
                   widget.title,
-                  style: subtitleTextStyle(
-                    color: Theme.of(context).accentColor,
+                  style: AppTextStyles.subtitleTextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
                 ),
               ),
@@ -219,17 +223,17 @@ class _CustomAppBarState extends State<_CustomAppBar> {
                             child: Container(
                               decoration: BoxDecoration(
                                 color: widget.tabController.index == i
-                                    ? lmSecondaryColor
+                                    ? AppColors.lmSecondaryColor
                                     : Theme.of(context).primaryColor,
                                 borderRadius: BorderRadius.circular(40),
                               ),
                               child: Center(
                                 child: Text(
                                   widget.tabs[i],
-                                  style: smallBoldTextStyle(
+                                  style: AppTextStyles.smallBoldTextStyle(
                                       color: widget.tabController.index == i
-                                          ? lmWhiteColor
-                                          : lmSecondaryLightColor
+                                          ? AppColors.lmWhiteColor
+                                          : AppColors.lmSecondaryLightColor
                                               .withOpacity(0.6)),
                                 ),
                               ),

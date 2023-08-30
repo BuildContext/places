@@ -5,8 +5,8 @@ import 'package:places/constants/text_styles.dart';
 import 'package:places/constants/colours_const.dart';
 import 'package:places/domain/sight.dart';
 
-import 'package:places/ui/screen/sight_list_screen.dart' show SightListScreen;
-import 'package:places/ui/screen/visiting_screen.dart' show VisitingScreen;
+import 'package:places/ui/screens/sight_list_screen.dart' show SightListScreen;
+import 'package:places/ui/screens/visiting_screen.dart' show VisitingScreen;
 
 part 'planned_sight_card.dart';
 part 'visited_sight_card.dart';
@@ -55,6 +55,10 @@ class SightCard extends StatelessWidget {
               color: Colors.yellow,
               image: DecorationImage(
                 image: NetworkImage(sight.url),
+                //TODO: NetworkImage bad url exception
+                onError: (exception, stackTrace) {
+                  print(exception);
+                },
                 fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.vertical(
@@ -68,8 +72,9 @@ class SightCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  sight.type,
-                  style: smallBoldTextStyle(color: lmWhiteColor),
+                  sight.type.data.title,
+                  style: AppTextStyles.smallBoldTextStyle(
+                      color: AppColors.lmWhiteColor),
                 ),
                 Row(
                   children: cardButtons,
@@ -100,8 +105,8 @@ class SightCard extends StatelessWidget {
                   const SizedBox(height: 16),
                   Text(
                     sight.name,
-                    style: smallTitleTextStyle(
-                      color: Theme.of(context).accentColor,
+                    style: AppTextStyles.smallTitleTextStyle(
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                     maxLines: 2,
                   ),
@@ -111,7 +116,8 @@ class SightCard extends StatelessWidget {
                   ),
                   Text(
                     sight.details,
-                    style: smallTextStyle(color: lmSecondaryLightColor),
+                    style: AppTextStyles.smallTextStyle(
+                        color: AppColors.lmSecondaryLightColor),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                   ),
@@ -133,8 +139,10 @@ class SightCard extends StatelessWidget {
           height: 28,
           child: Text(
             text,
-            style: smallTextStyle(
-              color: isCompleted ? lmGreenColour : lmSecondaryLightColor,
+            style: AppTextStyles.smallTextStyle(
+              color: isCompleted
+                  ? AppColors.lmGreenColour
+                  : AppColors.lmSecondaryLightColor,
             ),
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
@@ -151,7 +159,7 @@ class SightCard extends StatelessWidget {
 
   Widget get _favoriteToggleButton => cardButton(
         onTap: onTapToFavoriteButton,
-        child: SvgPicture.asset(heartIcon),
+        child: SvgPicture.asset(AppAssets.heartIcon),
       );
 
   Widget cardButton({Widget? child, VoidCallback? onTap}) {

@@ -23,14 +23,14 @@ class SightCardVisited extends SightCard {
   List<Widget> get cardButtons => [
         cardButton(
           onTap: onTapShareButton,
-          child: SvgPicture.asset(shareIcon),
+          child: SvgPicture.asset(AppAssets.shareIcon),
         ),
         const SizedBox(
           width: 14,
         ),
         cardButton(
           onTap: onTapDeleteButton,
-          child: SvgPicture.asset(closeIcon),
+          child: SvgPicture.asset(AppAssets.closeIcon),
         ),
       ];
 }

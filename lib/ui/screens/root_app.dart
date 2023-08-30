@@ -6,6 +6,8 @@ import 'package:places/ui/screens/sight_details_screen.dart';
 import 'package:places/ui/screens/sight_list_screen.dart';
 import 'package:places/ui/screens/visiting_screen.dart';
 
+import 'filter/filter_screen.dart';
+
 //Точка входа в приложение
 
 class RootApp extends StatefulWidget {
@@ -28,7 +30,8 @@ class _RootAppState extends State<RootApp> {
     return IndexedStack(
       index: pageIndex,
       children: [
-        SightListScreen(),
+        FilterScreen(),
+        //SightListScreen(),
         VisitingScreen(),
         SightDetailScreen(
           sight: MockData.sights[0],
@@ -40,10 +43,10 @@ class _RootAppState extends State<RootApp> {
 
   Widget getAppBar() {
     var items = [
-      pageIndex == 0 ? listIconFill : listIcon,
-      pageIndex == 1 ? mapIconFill : mapIcon,
-      pageIndex == 2 ? heartIconFill : heartIcon,
-      pageIndex == 3 ? settingIconFill : settingIcon,
+      pageIndex == 0 ? AppAssets.listIconFill : AppAssets.listIcon,
+      pageIndex == 1 ? AppAssets.mapIconFill : AppAssets.mapIcon,
+      pageIndex == 2 ? AppAssets.heartIconFill : AppAssets.heartIcon,
+      pageIndex == 3 ? AppAssets.settingIconFill : AppAssets.settingIcon,
     ];
 
     return Padding(
@@ -67,7 +70,7 @@ class _RootAppState extends State<RootApp> {
                   Column(mainAxisAlignment: MainAxisAlignment.end, children: [
                 SvgPicture.asset(
                   items[index],
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
               ]),
             );

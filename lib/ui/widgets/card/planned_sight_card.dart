@@ -21,14 +21,14 @@ class SightCardPlanned extends SightCard {
   List<Widget> get cardButtons => [
         cardButton(
           onTap: onTapDateSelectorButton,
-          child: SvgPicture.asset(calendarIcon),
+          child: SvgPicture.asset(AppAssets.calendarIcon),
         ),
         const SizedBox(
           width: 14,
         ),
         cardButton(
           onTap: onTapDeleteButton,
-          child: SvgPicture.asset(closeIcon),
+          child: SvgPicture.asset(AppAssets.closeIcon),
         ),
       ];
 }

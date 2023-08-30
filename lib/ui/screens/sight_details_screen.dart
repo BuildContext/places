@@ -3,6 +3,7 @@ import 'package:places/constants/strings_const.dart';
 import 'package:places/constants/text_styles.dart';
 import 'package:places/constants/colours_const.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/widgets/button/accept_big_button.dart';
 
 /// экран с подробной информацией
 /// о интересном месте, а также
@@ -39,6 +40,10 @@ class SightDetailScreen extends StatelessWidget {
             Container(
               child: Image.asset(
                 sight.localPath,
+                //TODO: asset errorBuilder
+                errorBuilder: (context, error, stackTrace) {
+                  return Icon(Icons.error);
+                },
                 fit: BoxFit.cover,
               ),
             ),
@@ -53,13 +58,13 @@ class SightDetailScreen extends StatelessWidget {
                 height: 32,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: lmWhiteColor,
+                  color: AppColors.lmWhiteColor,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 6),
                   child: Icon(
                     Icons.arrow_back_ios,
-                    color: black,
+                    color: AppColors.black,
                     size: 15,
                   ),
                 ),
@@ -79,20 +84,23 @@ class SightDetailScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 sight.name,
-                style: mediumTitleTextStyle(color: lmSecondaryColor),
+                style: AppTextStyles.mediumTitleTextStyle(
+                    color: AppColors.lmSecondaryColor),
               ),
             ),
             const SizedBox(height: 2),
             Row(
               children: [
                 Text(
-                  sight.type,
-                  style: smallBoldTextStyle(color: lmSecondaryColor),
+                  sight.type.data.title,
+                  style: AppTextStyles.smallBoldTextStyle(
+                      color: AppColors.lmSecondaryColor),
                 ),
                 const SizedBox(width: 16),
                 Text(
-                  sight_details_open,
-                  style: smallTextStyle(color: lmSecondaryLightColor),
+                  AppStrings.sightDetailsOpen,
+                  style: AppTextStyles.smallTextStyle(
+                      color: AppColors.lmSecondaryLightColor),
                 ),
               ],
             ),
@@ -101,20 +109,21 @@ class SightDetailScreen extends StatelessWidget {
             ),
             Text(
               sight.details,
-              style: smallTextStyle(color: lmSecondaryColor),
+              style: AppTextStyles.smallTextStyle(
+                  color: AppColors.lmSecondaryColor),
             ),
             const SizedBox(height: 24),
-            DetailBigButton(
+            AcceptBigButton(
               onTap: (() {
                 print('ПОСТРОИТЬ МАРШРУТ');
               }),
               icon: Icons.directions_rounded,
-              text: sight_details_directions,
+              text: AppStrings.sightDetailsDirections,
             ),
             const SizedBox(height: 24),
             Divider(
               thickness: 0.8,
-              color: lmSecondaryLightColor.withOpacity(0.4),
+              color: AppColors.lmSecondaryLightColor.withOpacity(0.4),
             ),
             const SizedBox(height: 8),
             Row(
@@ -128,13 +137,15 @@ class SightDetailScreen extends StatelessWidget {
                         Icon(
                           Icons.calendar_today_outlined,
                           size: 22,
-                          color: lmSecondaryLightColor.withOpacity(0.4),
+                          color:
+                              AppColors.lmSecondaryLightColor.withOpacity(0.4),
                         ),
                         const SizedBox(width: 9),
                         Text(
-                          sight_details_to_plan,
-                          style: smallTextStyle(
-                            color: lmSecondaryLightColor.withOpacity(0.4),
+                          AppStrings.sightDetailsToPlan,
+                          style: AppTextStyles.smallTextStyle(
+                            color: AppColors.lmSecondaryLightColor
+                                .withOpacity(0.4),
                           ),
                         ),
                       ],
@@ -150,68 +161,19 @@ class SightDetailScreen extends StatelessWidget {
                         Icon(
                           Icons.star_rate,
                           size: 22,
-                          color: lmSecondaryColor,
+                          color: AppColors.lmSecondaryColor,
                         ),
                         const SizedBox(width: 9),
                         Text(
-                          sight_details_to_favorites,
-                          style: smallTextStyle(color: lmSecondaryColor),
+                          AppStrings.sightDetailsToFavorites,
+                          style: AppTextStyles.smallTextStyle(
+                              color: AppColors.lmSecondaryColor),
                         ),
                       ],
                     ),
                   ),
                 ),
               ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class DetailBigButton extends StatelessWidget {
-  final VoidCallback? onTap;
-  final IconData? icon;
-  final Color? iconColor;
-  final String text;
-  final Color? textColor;
-  const DetailBigButton({
-    Key? key,
-    this.onTap,
-    this.icon,
-    this.iconColor = lmWhiteColor,
-    required this.text,
-    this.textColor = lmWhiteColor,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: double.infinity,
-        height: 48,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: lmGreenColour,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (icon != null) ...[
-              Icon(
-                icon,
-                size: 24,
-                color: iconColor,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-            ],
-            Text(
-              text,
-              style: buttonBigTextStyle(color: textColor),
             ),
           ],
         ),

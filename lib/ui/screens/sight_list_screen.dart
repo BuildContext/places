@@ -24,7 +24,7 @@ class _SightListScreenState extends State<SightListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _CustomAppBar(
-        title: sigth_list_screen_title,
+        title: AppStrings.sigthListScreenTitle,
         height: 136,
       ),
       body: SingleChildScrollView(
@@ -43,7 +43,7 @@ class _SightListScreenState extends State<SightListScreen> {
   }
 }
 
-class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final double height;
 
@@ -72,8 +72,8 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             ),
             child: Text(
               title,
-              style: largeTitleTextStyle(
-                color: Theme.of(context).accentColor,
+              style: AppTextStyles.largeTitleTextStyle(
+                color: Theme.of(context).colorScheme.secondary,
               ),
             ),
           ),
